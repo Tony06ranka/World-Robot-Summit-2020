@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="twist_topic" default="/twist_topic" />
+  <arg name="joy_sub_topic" default="/joy_sub_topic" />
+
+  <node name="customer_stop_by_joy_node" pkg="customer_stop_by_joy" type="customer_stop_by_joy_node" output="screen" respawn="true" >
+    <param name="joy_pub_topic" value="$(arg twist_topic)" />
+    <param name="joy_sub_topic" value="$(arg joy_sub_topic)" />
+  </node>
+</launch>

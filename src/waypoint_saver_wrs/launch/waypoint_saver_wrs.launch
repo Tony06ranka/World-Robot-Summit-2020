@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="current_pose_topic" default="/current_pose" />
+  <arg name="waypoint_saver_pub" default="/waypoint_saver_pub" />
+  <arg name="waypoint_csv" default="/home/ranka/data/waypoint/saved_waypoint_test04.csv" />
+  <arg name="map_frame" default="map" />
+  <arg name="dist_interval" default="1.0" />
+
+  <node name="waypoint_saver_wrs_node" pkg="waypoint_saver_wrs" type="waypoint_saver_wrs_node" output="screen" respawn="true" >
+    <param name="current_pose_topic" value="$(arg current_pose_topic)" />
+    <param name="waypoint_saver_pub" value="$(arg waypoint_saver_pub)" />
+    <param name="waypoint_csv" value="$(arg waypoint_csv)" />
+    <param name="map_frame" value="$(arg map_frame)" />
+    <param name="dist_interval" value="$(arg dist_interval)" />
+  </node>
+</launch>
