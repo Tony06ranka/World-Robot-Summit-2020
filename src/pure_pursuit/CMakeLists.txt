@@ -6,15 +6,21 @@ add_compile_options(-std=c++11)
 
 find_package(catkin REQUIRED COMPONENTS
   geometry_msgs
+  std_msgs
   nav_msgs
   roscpp
   tf
 )
 
-catkin_package()
+catkin_package(
+  INCLUDE_DIRS include 
+  CATKIN_DEPENDS geometry_msgs roscpp std_msgs tf nav_msgs
+# DEPENDS system_lib
+)
+
 
 include_directories(
-  include
+  include 
   ${catkin_INCLUDE_DIRS}
 )
 
