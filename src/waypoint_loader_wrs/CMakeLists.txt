@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(waypoint_loader)
+project(waypoint_loader_wrs)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 add_compile_options(-std=c++11)
@@ -23,6 +23,6 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-add_executable(waypoint_loader_node src/waypoint_loader_node.cpp src/waypoint_loader.cpp)
-target_link_libraries(waypoint_loader_node ${catkin_LIBRARIES})
+add_executable(waypoint_loader_wrs_node src/waypoint_loader_wrs_node.cpp src/waypoint_loader_wrs.cpp)
+target_link_libraries(waypoint_loader_wrs_node ${catkin_LIBRARIES})
 

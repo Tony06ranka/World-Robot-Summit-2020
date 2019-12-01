@@ -1,4 +1,4 @@
-#include <waypoint_loader/waypoint_loader.h>
+#include <waypoint_loader_wrs/waypoint_loader_wrs.h>
 
 WaypointLoader::WaypointLoader(ros::NodeHandle nh,ros::NodeHandle pnh) : nh_(nh),pnh_(pnh)
 {
