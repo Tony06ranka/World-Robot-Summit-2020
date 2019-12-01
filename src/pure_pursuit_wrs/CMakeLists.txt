@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(pure_pursuit)
+project(pure_pursuit_wrs)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 add_compile_options(-std=c++11)
@@ -24,5 +24,5 @@ include_directories(
   ${catkin_INCLUDE_DIRS}
 )
 
-add_executable(pure_pursuit_node src/pure_pursuit_node.cpp src/pure_pursuit.cpp)
-target_link_libraries(pure_pursuit_node ${catkin_LIBRARIES})
+add_executable(pure_pursuit_wrs_node src/pure_pursuit_wrs_node.cpp src/pure_pursuit_wrs.cpp)
+target_link_libraries(pure_pursuit_wrs_node ${catkin_LIBRARIES})

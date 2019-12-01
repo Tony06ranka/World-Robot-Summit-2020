@@ -1,4 +1,4 @@
-#include <pure_pursuit/pure_pursuit.h>
+#include <pure_pursuit_wrs/pure_pursuit_wrs.h>
 
 PurePursuit::PurePursuit(ros::NodeHandle nh, ros::NodeHandle pnh) : nh_(nh),pnh_(pnh)
 {

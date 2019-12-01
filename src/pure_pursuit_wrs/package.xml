@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>pure_pursuit</name>
+  <name>pure_pursuit_wrs</name>
   <version>0.0.0</version>
-  <description>The pure_pursuit package</description>
+  <description>The pure_pursuit_wrs package</description>
 
-  <maintainer email="ranka@todo.todo">rigel</maintainer>
+  <maintainer email="ranka@todo.todo">ranka</maintainer>
 
   <license>TODO</license>
 

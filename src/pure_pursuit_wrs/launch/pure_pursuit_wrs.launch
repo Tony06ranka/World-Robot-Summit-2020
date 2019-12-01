@@ -6,7 +6,7 @@
   <arg name="linear_velocity" default="1.0" />
   <arg name="lookahead_distance" default="0.5" />
 
-  <node name="pure_pursuit_node" pkg="pure_pursuit" type="pure_pursuit_node" output="screen" respawn="true" >
+  <node name="pure_pursuit_wrs_node" pkg="pure_pursuit_wrs" type="pure_pursuit_wrs_node" output="screen" respawn="true" >
     <param name="twist_topic" value="$(arg twist_topic)" />
     <param name="path_topic" value="$(arg path_topic)" />
     <param name="current_pose_topic" value="$(arg current_pose_topic)" />
