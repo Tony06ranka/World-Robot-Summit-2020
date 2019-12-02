@@ -1,7 +1,12 @@
 # World-Robot-Summit-2020
 
-## HOW TO LAUNCH 
+## REQUIREMENT
+1.Install Dependecies
+```
+sudo apt install ros-$ROS_DISTRO-gmapping ros-$ROS_DISTRO-amcl ros-$ROS_DISTRO-map-server 
+```
 
+## HOW TO LAUNCH 
 ```
 rosrun map_server map_server //any map here
 rosrun amcl amcl 
