@@ -3,12 +3,14 @@
 GetBackToWaypoint::GetBackToWaypoint(ros::NodeHandle nh, ros::NodeHandle pnh) : nh_(nh), pnh_(pnh)
 {
     pnh_.param<std::string>("path_topic", path_topic_, "/getback_waypoint/getback_waypoint_raw");
-    pnh_.param<std::string>("twist_topic", twist_topic_, "/getback_waypoint/twist_vel");
+    pnh_.param<std::string>("twist_topic", twist_topic_, "/getback_waypoint/cmd_vel");
     pnh_.param<std::string>("map_frame", map_frame_, "map");
     pnh_.param<std::string>("current_pose_topic", current_pose_topic_, "/current_pose");
     pnh_.param<std::string>("object_detected_topic", object_detected_topic_, "/object_detected");
     pnh_.param<std::string>("done_collect_topic", done_collect_topic_, "/done_collect");
-    pnh_.param<std::string>("getback_done_topic", getback_done_topic_, "/getback_done"); 
+    pnh_.param<std::string>("getback_done_topic", getback_done_topic_, "/getback_done");
+    pnh_.param<double>("linear_velocity", linear_velocity_, 0.3);
+    pnh_.param<double>("lookahead_distance", lookahead_dist_, 0.5); 
     twist_pub_ = nh_.advertise<geometry_msgs::Twist>(twist_topic_, 1);
     getback_done_pub_ = nh_.advertise<std_msgs::Bool>(getback_done_topic_, 1);
     current_pose_sub_ = nh_.subscribe(current_pose_topic_, 1, &GetBackToWaypoint::CurrentPoseCallback_, this);

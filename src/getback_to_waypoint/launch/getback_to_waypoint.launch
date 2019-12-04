@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <launch>
   <arg name="path_topic" default="/getback_waypoint/getback_waypoint_raw" />
-  <arg name="twsit_topic" default="/getback_waypoint/twist_vel" />
+  <arg name="twist_topic" default="/getback_waypoint/cmd_vel" />
   <arg name="map_frame" default="map" />
   <arg name="current_pose_topic" default="/current_pose" />
   <arg name="object_detected_topic" default="/object_detected" />
@@ -13,6 +13,7 @@
     <param name="path_topic" value="$(arg path_topic)" />
     <param name="twist_topic" value="$(arg twist_topic)" />
     <param name="map_frame" value="$(arg map_frame)" />
+    <param name="current_pose_topic" value="$(arg current_pose_topic)" />
     <param name="object_detected_topic" value="$(arg object_detected_topic)" />
     <param name="done_collect_topic" value="$(arg done_collect_topic)" />
     <param name="linear_velocity" value="$(arg linear_velocity)" />

@@ -2,19 +2,19 @@
 
 PurePursuit::PurePursuit(ros::NodeHandle nh, ros::NodeHandle pnh) : nh_(nh),pnh_(pnh)
 {
-    pnh.param<std::string>("twist_topic", twist_topic_, "cmd_vel");
-    pnh.param<std::string>("path_topic", path_topic_, "waypoints_raw");
-    pnh.param<std::string>("current_pose_topic", current_pose_topic_, "current_pose");
-    pnh.param<std::string>("map_frame", map_frame_, "map");
-    pnh.param<std::string>("get_back_topic", get_back_topic_, "get_back_waypoint");
-    pnh.param<std::string>("object_detected_topic", object_detected_topic_, "object_detected");
-    pnh.param<double>("linear_velocity", linear_velocity_, 0.3);
-    pnh.param<double>("lookahead_distance", lookahead_dist_, 0.5);
-    twist_pub_ = nh.advertise<geometry_msgs::Twist>(twist_topic_, 1);
-    path_sub_ = nh.subscribe(path_topic_, 1, &PurePursuit::WaypointRawCallback_, this);
-    object_detected_sub_ = nh.subscribe(object_detected_topic_, 1, &PurePursuit::ObjectDetectedCallback_, this);
-    get_back_sub_ = nh.subscribe(get_back_topic_, 1, &PurePursuit::GetBackWaypointCallback_, this);
-    current_pose_sub_ = nh.subscribe(current_pose_topic_, 1, &PurePursuit::CurrentPoseCallback_, this);
+    pnh_.param<std::string>("twist_topic", twist_topic_, "cmd_vel");
+    pnh_.param<std::string>("path_topic", path_topic_, "waypoints_raw");
+    pnh_.param<std::string>("current_pose_topic", current_pose_topic_, "current_pose");
+    pnh_.param<std::string>("map_frame", map_frame_, "map");
+    pnh_.param<std::string>("get_back_topic", get_back_topic_, "get_back_waypoint");
+    pnh_.param<std::string>("object_detected_topic", object_detected_topic_, "object_detected");
+    pnh_.param<double>("linear_velocity", linear_velocity_, 0.3);
+    pnh_.param<double>("lookahead_distance", lookahead_dist_, 0.5);
+    twist_pub_ = nh_.advertise<geometry_msgs::Twist>(twist_topic_, 1);
+    path_sub_ = nh_.subscribe(path_topic_, 1, &PurePursuit::WaypointRawCallback_, this);
+    object_detected_sub_ = nh_.subscribe(object_detected_topic_, 1, &PurePursuit::ObjectDetectedCallback_, this);
+    get_back_sub_ = nh_.subscribe(get_back_topic_, 1, &PurePursuit::GetBackWaypointCallback_, this);
+    current_pose_sub_ = nh_.subscribe(current_pose_topic_, 1, &PurePursuit::CurrentPoseCallback_, this);
     boost::thread publish_thread(boost::bind(&PurePursuit::PublishCmdVel_, this));
 
 }
