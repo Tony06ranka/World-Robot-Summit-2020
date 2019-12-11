@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="path_topic" default="/main_mission/path" />
+  <arg name="waypoints_csv" default="/home/ranka/data/waypoint/saved_waypoint_test04.csv" />
+  <arg name="map_frame" default="map" />
+
+  <node name="waypoint_loader_wrs_node" pkg="waypoint_loader_wrs" type="waypoint_loader_wrs_node" output="screen" respawn="true" >
+    <param name="path_topic" value="$(arg path_topic)" />
+    <param name="waypoints_csv" value="$(arg waypoints_csv)" />
+    <param name="map_frame" value="$(arg map_frame)" />
+  </node>
+</launch>

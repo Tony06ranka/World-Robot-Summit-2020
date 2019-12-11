@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="twist_topic" default="/cmd_vel" />
+  <arg name="path_topic" default="/waypoint_selector/path" />
+  <arg name="current_pose_topic" default="/current_pose" />
+  <arg name="linear_velocity" default="1.0" />
+  <arg name="lookahead_distance" default="0.5" />
+  <arg name="map_frame" default="map" />
+  <arg name="get_back_topic" default="/get_back_topic" />
+  <arg name="object_detected_topic" default="/object_detected_topic" />
+  
+
+
+  <node name="pure_pursuit_wrs_node" pkg="pure_pursuit_wrs" type="pure_pursuit_wrs_node" output="screen" respawn="true" >
+    <param name="twist_topic" value="$(arg twist_topic)" />
+    <param name="path_topic" value="$(arg path_topic)" />
+    <param name="current_pose_topic" value="$(arg current_pose_topic)" />
+    <param name="linear_velocity" value="$(arg linear_velocity)" />
+    <param name="lookahead_distance" value="$(arg lookahead_distance)" />
+    <param name="map_frame" value="$(arg map_frame)" />
+    <param name="get_back_topic" value="$(arg get_back_topic)" />
+    <param name="object_detected_topic" value="$(arg object_detected_topic)" />
+  </node>
+</launch>
