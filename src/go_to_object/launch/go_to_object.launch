@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<launch>
+  <node name="go_to_object" pkg="go_to_object" type="go_to_object.py" output="screen" >
+ 
+  </node>
+</launch> 
