@@ -40,5 +40,4 @@ rosrun urg_node urg_node
 rosrun tf static_transform_publisher 0 0 0 0 0 0 1.0 base_footprint base_link 100
 rosrun tf static_transform_publisher 0 0 0 0 0 0 1.0 base_link laser 100
 rosrun gmapping slam_gmapping 
-rosrun tf transformation 
 ```
