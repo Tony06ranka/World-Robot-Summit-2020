@@ -8,18 +8,31 @@ sudo apt install ros-$ROS_DISTRO-gmapping ros-$ROS_DISTRO-amcl ros-$ROS_DISTRO-m
 
 ## HOW TO LAUNCH 
 ```
-rosrun map_server map_server //any map here
+roslaunch ca_driver create_2.launch
+rosrun urg_node urg_node
+rosrun map_server map_server home/any_map
 rosrun amcl amcl 
+roslaunch dummy_localizer dummy_localizer.launch 
+roslaunch rostate_machine mission_state_machine.launch
 roslaunch waypoint_loader_wrs waypoint_loader_wrs.launch
 roslaunch waypoint_selector waypoint_selector.launch
 roslaunch pure_pursuit_wrs pure_pursuit_wrs.launch
-roslaunch dummy_localizer dummy_localizer.launch 
 ```
 
-## HOW TO CREATE A MAP AND WAYPOINT
+## HOW TO CREATE WAYPOINT
 ```
+roslaunch ca_driver create_2.launch
+rosrun urg_node urg_node 
 rosrun amcl amcl
-rosrun gmapping slam_gmapping scan:=base_scan
-roslaunch waypoint_saver_wrs waypoint_saver_wrs.launch
-roslaunch dummy_localizer dummy_localizer.launch 
+rosrun map_server map_server home/happy_mini/any_map
+roslaunch dummy_localizer dummy_localizer.launch
+roslaunch waypoint_saver_wrs waypoint_saver_wrs.launch 
+```
+
+## HOW TO CREATE A MAP
+```
+roslaunch ca_driver create_2.launch
+rosrun urg_node urg_node 
+rosrun gmapping slam_gmapping 
+rosrun tf transformation 
 ```
