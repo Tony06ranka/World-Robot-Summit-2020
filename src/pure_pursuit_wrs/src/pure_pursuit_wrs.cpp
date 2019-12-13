@@ -8,7 +8,7 @@ PurePursuit::PurePursuit(ros::NodeHandle nh, ros::NodeHandle pnh) : nh_(nh),pnh_
     pnh_.param<std::string>("map_frame", map_frame_, "map");
     pnh_.param<std::string>("get_back_topic", get_back_topic_, "get_back_waypoint");
     pnh_.param<std::string>("object_detected_topic", object_detected_topic_, "object_detected");
-    pnh_.param<double>("linear_velocity", linear_velocity_, 0.3);
+    pnh_.param<double>("linear_velocity", linear_velocity_, 0.1);
     pnh_.param<double>("lookahead_distance", lookahead_dist_, 0.5);
     twist_pub_ = nh_.advertise<geometry_msgs::Twist>(twist_topic_, 1);
     path_sub_ = nh_.subscribe(path_topic_, 1, &PurePursuit::WaypointRawCallback_, this);
@@ -67,18 +67,20 @@ void PurePursuit::PublishCmdVel_(void)
             target_relative_dist = std::sqrt(std::pow(target_relative_pos.x, 2) + std::pow(target_relative_pos.y, 2) + std::pow(target_relative_pos.z, 2));
             target_relative_angle = std::atan2(target_relative_pos.y, target_relative_pos.x) - tf::getYaw(current_pose_.pose.orientation);
 
-            if(target_relative_angle < M_PI/2)
+            if(std::abs(target_relative_angle) < M_PI/2)
             {
-                if(lookahead_dist_ > target_relative_dist) break;
+                if(target_relative_dist > lookahead_dist_) break;
             }
 
 
         }
         if(object_detected_ != true)
         {
+            
             geometry_msgs::Twist cmd_vel;
             cmd_vel.linear.x = linear_velocity_;
             cmd_vel.angular.z = (2.0 * linear_velocity_ * sin(target_relative_angle)) / target_relative_dist;
+            printf("angle=%f\n" ,cmd_vel.angular.z);
             twist_pub_.publish(cmd_vel);
         }
         else
